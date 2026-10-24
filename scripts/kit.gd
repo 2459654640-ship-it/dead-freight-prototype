@@ -33,6 +33,11 @@ static func gun(parent:Node,first_person:bool=true)->Node3D:
 			if mesh.name=="fps_arms_extended":mesh.material_override=mat(Color("9e8c74"))
 			elif mesh.visible:mesh.material_override=mat(Color("26332f"),.6)
 		var anim=view.find_children("*","AnimationPlayer",true,false)[0]
+		# An open reflex sight keeps the target visible over the imported receiver.
+		for x in [-.036,.036]:box(g,Vector3(x,.06,-.75),Vector3(.007,.075,.026),Color("172420"))
+		box(g,Vector3(0,.098,-.75),Vector3(.079,.007,.026),Color("172420"))
+		box(g,Vector3(0,.022,-.75),Vector3(.079,.007,.026),Color("172420"))
+		box(g,Vector3(0,-.012,-.75),Vector3(.025,.065,.035),Color("172420"))
 		g.set_meta("anim",anim);anim.play("assualt_fire");anim.advance(0);anim.pause()
 		return g
 	var asset=load("res://assets/vendor/flatguns/carbine.glb").instantiate()

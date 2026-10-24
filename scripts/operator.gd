@@ -95,7 +95,7 @@ func _physics_process(delta):
 	camera.rotation.z=lerpf(camera.rotation.z,-input.x*.012,1-exp(-10*delta))
 	recoil_offset=move_toward(recoil_offset,0,delta*.24)
 	mouse_sway=mouse_sway.lerp(Vector2.ZERO,1-exp(-10*delta))
-	var offset=Vector3(0,.02,-.10) if aiming else Vector3(.18,-.13,-.15)
+	var offset=Vector3(0,-.06,-.10) if aiming else Vector3(.18,-.13,-.15)
 	if action=="RELOADING":offset+=Vector3(.09,-.20,.12)
 	elif action=="TREATING":offset.y-=.4
 	elif sprinting:offset+=Vector3(.02,-.08,.07)
