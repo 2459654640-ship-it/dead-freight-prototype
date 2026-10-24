@@ -23,12 +23,14 @@ func _ready():
 	collision_layer=4;collision_mask=1|2|4
 	var c=CollisionShape3D.new();var shape=CapsuleShape3D.new();shape.radius=.32;shape.height=1.78;c.shape=shape;c.position.y=.89;add_child(c)
 	model=Node3D.new();add_child(model)
-	var visual=load("res://assets/vendor/unvanquished/modern_guard.glb").instantiate();model.add_child(visual)
-	visual.scale=Vector3.ONE*.13;visual.rotation.y=PI/2
+	var visual=load("res://assets/vendor/city-soldier/scene.gltf").instantiate();model.add_child(visual)
+	Kit.disable_imported_collisions(visual)
+	Kit.matte_imported_surfaces(visual,.88)
+	visual.scale=Vector3.ONE*.97;visual.rotation.y=PI
 	animation=visual.find_children("*","AnimationPlayer",true,false)[0]
 	rig=visual.find_children("*","Skeleton3D",true,false)[0]
-	for clip in animation.get_animation_list():animation.get_animation(clip).loop_mode=Animation.LOOP_LINEAR
-	animation.play("Man_Idle")
+	animation.play("stay pose");animation.advance(0);animation.pause()
+	pose_city_arms()
 	var gun=Kit.gun(model,false);gun.position=Vector3(.14,1.29,-.35)
 	muzzle=Kit.box(gun,Vector3(0,0,-.54),Vector3(.07,.07,.18),Color("ffd898"));muzzle.material_override=Kit.mat(Color("ffd898"),0,2);muzzle.visible=false
 	home=global_position;goal=home
@@ -53,8 +55,7 @@ func _physics_process(delta):
 		var target_y=atan2(-(look.x-global_position.x),-(look.z-global_position.z))
 		model.rotation.y=lerp_angle(model.rotation.y,target_y,delta*8)
 	anim+=delta*speed*(1 if direction.length()>.1 else 0)
-	var clip="Man_Run" if direction.length()>.1 and state!="PATROL" else ("Man_Walk" if direction.length()>.1 else "Man_Idle")
-	if clip!=current_animation:animation.play(clip,.18);current_animation=clip
+	animate_city(delta,direction.length(),speed)
 func visible_player()->bool:
 	var eye=global_position+Vector3(0,1.55,0)
 	var target=raid.player.global_position+Vector3(0,1.2,0)
@@ -111,3 +112,24 @@ func pose_arm(bone:String,child:String,origin:Vector3,end:Vector3):
 	var previous=(rig.get_bone_global_rest(child_idx).origin-rest.origin).normalized()
 	rest.basis=Basis(Quaternion(previous,(end-origin).normalized()))*rest.basis
 	rest.origin=origin;rig.set_bone_global_pose_override(idx,rest,1,true)
+
+func city_bone(number:int)->int:
+	for i in rig.get_bone_count():
+		if rig.get_bone_name(i).begins_with("Bone.%03d_"%number):return i
+	return -1
+func aim_city(number:int,child_number:int,target:Vector3):
+	var i=city_bone(number);var child=city_bone(child_number)
+	if i<0 or child<0:return
+	var pose=rig.get_bone_global_pose(i);var old=(rig.get_bone_global_pose(child).origin-pose.origin).normalized()
+	var point=rig.to_local(model.to_global(target));var desired=(point-pose.origin).normalized()
+	pose.basis=Basis(Quaternion(old,desired))*pose.basis
+	rig.set_bone_global_pose_override(i,pose,1,true);rig.force_update_all_bone_transforms()
+func pose_city_arms():
+	# Adapt the existing rig pose without changing any artist-authored geometry.
+	rig.clear_bones_global_pose_override();rig.force_update_all_bone_transforms()
+	aim_city(36,37,Vector3(.30,1.05,-.05));aim_city(37,38,Vector3(.14,1.25,-.30))
+	aim_city(13,14,Vector3(-.28,1.05,-.12));aim_city(14,15,Vector3(-.03,1.27,-.65))
+func animate_city(_delta:float,moving:float,_speed:float):
+	for pair in [[7,1.0],[10,-1.0]]:
+		var i=city_bone(pair[0])
+		if i>=0:rig.set_bone_pose_rotation(i,Quaternion(Vector3.RIGHT,sin(anim*6)*.28*pair[1] if moving>.1 else 0.0))

@@ -26,42 +26,24 @@ static func limb(parent:Node,a:Vector3,b:Vector3,radius:float,color:Color):
 	return m
 static func gun(parent:Node,first_person:bool=true)->Node3D:
 	var g=Node3D.new();parent.add_child(g)
-	if first_person:
-		var view=load("res://assets/vendor/fps-community/viewmodel.glb").instantiate();g.add_child(view)
+	var view=load("res://assets/vendor/finished-m4/scene.gltf").instantiate();g.add_child(view);view.scale=Vector3.ONE*.03;view.rotation.y=PI
+	disable_imported_collisions(view)
+	for mesh in view.find_children("*","MeshInstance3D",true,false):
+		if mesh.name in ["Object_17","Object_18"]:mesh.visible=false # Optional magnifier; use the authored 1x holographic sight.
+		for surface in mesh.mesh.get_surface_count():
+			var original=mesh.mesh.surface_get_material(surface)
+			if original is StandardMaterial3D and "lens" in original.resource_name.to_lower():
+				var glass=original.duplicate();glass.albedo_texture=null;glass.albedo_color=Color(.1,.16,.14,.06);glass.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA;glass.metallic=0;glass.roughness=.06
+				mesh.set_surface_override_material(surface,glass)
+	var anim:AnimationPlayer=view.find_children("*","AnimationPlayer",true,false)[0]
+	g.set_meta("anim",anim);g.set_meta("idle_clip","h2_skeleton|idle")
+	anim.play("h2_skeleton|idle");anim.advance(0);anim.pause()
+	if not first_person:
 		for mesh in view.find_children("*","MeshInstance3D",true,false):
-			mesh.visible=mesh.name in ["fps_arms_extended","assualt"]
-			if mesh.name=="fps_arms_extended":
-				var sleeve=StandardMaterial3D.new();sleeve.vertex_color_use_as_albedo=true;sleeve.roughness=.95;mesh.material_override=sleeve
-			elif mesh.name=="assualt":
-				mesh.mesh=null
-				pass
-			elif mesh.visible:mesh.material_override=mat(Color("26332f"),.6)
-		var carbine=load("res://assets/vendor/flatguns/carbine.glb").instantiate();g.add_child(carbine);carbine.scale=Vector3.ONE*1.5;carbine.position=Vector3(0,-.08,-.20)
-		var gun_rig:Skeleton3D=carbine.find_children("*","Skeleton3D",true,false)[0]
-		g.set_meta("carbine_rig",gun_rig)
-		var magazine_bone=gun_rig.find_bone("Magazine")
-		if magazine_bone>=0:g.set_meta("mag_rest",gun_rig.get_bone_pose_position(magazine_bone))
-		var anim=view.find_children("*","AnimationPlayer",true,false)[0]
-		# An open reflex sight keeps the target visible over the imported receiver.
-		for x in [-.022,.022]:box(g,Vector3(x,.06,-.35),Vector3(.006,.046,.026),Color("172420"))
-		box(g,Vector3(0,.083,-.35),Vector3(.050,.006,.026),Color("172420"))
-		box(g,Vector3(0,.037,-.35),Vector3(.050,.006,.026),Color("172420"))
-		box(g,Vector3(0,.002,-.35),Vector3(.025,.065,.035),Color("172420"))
-		g.set_meta("anim",anim);anim.play("assualt_fire");anim.advance(0);anim.pause()
-		return g
-	var asset=load("res://assets/vendor/flatguns/carbine.glb").instantiate()
-	g.add_child(asset);asset.scale=Vector3.ONE*1.15;asset.position=Vector3(0,-.01,-.12)
-	if first_person:
-		var sleeve=Color("626a56");var glove=Color("3e4940")
-		limb(g,Vector3(.18,-.30,.35),Vector3(.045,-.16,.12),.065,sleeve)
-		limb(g,Vector3(-.22,-.26,.16),Vector3(-.07,-.08,-.35),.06,sleeve)
-		limb(g,Vector3(.045,-.16,.12),Vector3(.035,-.06,.01),.052,glove)
-		limb(g,Vector3(-.07,-.08,-.35),Vector3(-.025,-.03,-.43),.048,glove)
-		for z in [-.40,-.43,-.46]:limb(g,Vector3(-.05,-.04,z),Vector3(.03,-.045,z),.012,glove)
-	# Raised red-dot housing also makes the sight readable on the downloaded rifle.
-	box(g,Vector3(0,.09,-.15),Vector3(.05,.012,.05),Color("172328"))
-	for x in [-.022,.022]:box(g,Vector3(x,.116,-.15),Vector3(.007,.045,.025),Color("172328"))
-	box(g,Vector3(0,.139,-.15),Vector3(.05,.007,.025),Color("172328"))
+			if mesh.name in ["Object_10","Object_11","Object_12","Object_13"]:mesh.visible=false
+		var rig:Skeleton3D=view.find_children("*","Skeleton3D",true,false)[0]
+		var bone=rig.find_bone("j_gun_05")
+		if bone>=0:view.position-=g.to_local(rig.to_global(rig.get_bone_global_pose(bone).origin))
 	return g
 static var vendor_materials:Dictionary={}
 static func pbr(name:String,triplanar:bool=false)->StandardMaterial3D:
@@ -81,6 +63,8 @@ static func pbr(name:String,triplanar:bool=false)->StandardMaterial3D:
 	if triplanar:m.uv1_scale=Vector3(.28,.28,.28)
 	vendor_materials[key]=m;return m
 static func prop(parent:Node,pos:Vector3,kind:String,height:float=1.0)->Node3D:
+	if kind=="barrel":return imported_prop(parent,pos,"res://assets/vendor/oil-barrel/scene.gltf",height)
+	if kind in ["crate","cargo"]:return imported_prop(parent,pos,"res://assets/vendor/plastic-crate/scene.gltf",minf(height,.65))
 	var packed=load("res://assets/vendor/tps/"+kind+".glb") as PackedScene
 	var root=Node3D.new();parent.add_child(root);root.position=pos
 	var scene=packed.instantiate();root.add_child(scene)
@@ -100,5 +84,36 @@ static func ground_pbr(name:String)->StandardMaterial3D:
 	if vendor_materials.has(name):return vendor_materials[name]
 	var path="res://assets/vendor/ambientcg/"+name
 	var m=StandardMaterial3D.new();m.albedo_texture=load(path+"_Color.jpg");m.normal_enabled=true;m.normal_texture=load(path+"_NormalGL.jpg");m.normal_scale=.65;m.roughness_texture=load(path+"_Roughness.jpg");m.roughness_texture_channel=BaseMaterial3D.TEXTURE_CHANNEL_RED;m.roughness=1
+	var ao_path=path+"_AmbientOcclusion.jpg"
+	if ResourceLoader.exists(ao_path):m.ao_enabled=true;m.ao_texture=load(ao_path);m.ao_light_affect=.65
 	m.uv1_triplanar=true;m.uv1_world_triplanar=true;m.uv1_scale=Vector3.ONE*.25;m.texture_filter=BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
 	vendor_materials[name]=m;return m
+
+static func imported_prop(parent:Node,pos:Vector3,path:String,height:float)->Node3D:
+	var root=Node3D.new();parent.add_child(root)
+	var asset=load(path).instantiate();root.add_child(asset);disable_imported_collisions(asset)
+	if "plastic-crate" in path or "wooden-crate" in path:matte_imported_surfaces(asset,.82)
+	var bounds=AABB();var first=true
+	for mesh in asset.find_children("*","MeshInstance3D",true,false):
+		var box:AABB=mesh.get_aabb()
+		for i in 8:
+			var point=root.to_local(mesh.to_global(box.get_endpoint(i)))
+			if first:bounds=AABB(point,Vector3.ZERO);first=false
+			else:bounds=bounds.expand(point)
+	var factor=height/maxf(bounds.size.y,.001)
+	asset.scale*=factor;asset.position-=Vector3(bounds.get_center().x,bounds.position.y,bounds.get_center().z)*factor
+	root.position=pos;return root
+
+static func disable_imported_collisions(asset:Node):
+	# Sketchfab mesh names containing _col may trigger Godot collision generation.
+	# Imported art is visual; gameplay collision is supplied by our actor/map bodies.
+	for body in asset.find_children("*","CollisionObject3D",true,false):
+		body.collision_layer=0;body.collision_mask=0
+
+static func matte_imported_surfaces(asset:Node,roughness:float):
+	for mesh in asset.find_children("*","MeshInstance3D",true,false):
+		for surface in mesh.mesh.get_surface_count():
+			var original=mesh.mesh.surface_get_material(surface)
+			if original is StandardMaterial3D:
+				var material=original.duplicate();material.metallic=0;material.metallic_texture=null;material.roughness_texture=null;material.roughness=roughness
+				mesh.set_surface_override_material(surface,material)

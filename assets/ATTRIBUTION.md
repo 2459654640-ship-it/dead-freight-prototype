@@ -1,116 +1,101 @@
-# Asset credits
+# Current asset attribution
 
-Industrial prop meshes and PBR texture sets from **Godot Third Person Shooter Demo**:
-https://github.com/godotengine/tps-demo/tree/a82f15448e9b015440d3bbdf5e10801b260c4e9f
+All currently rendered equipment below comes from existing artist-authored models.
+Gameplay, scene composition, collision, IK and integration code are project work.
+The earlier programmatically built tactical gear and simplified viewmodels have
+been removed from runtime assets; their history remains in Git.
 
-Copyright © 2018 Juan Linietsky and Fernando Miguel Calabró.
-Licensed under **Creative Commons Attribution 3.0 (CC-BY 3.0)**:
-https://creativecommons.org/licenses/by/3.0/
-Original license: [vendor/tps/LICENSE.md](vendor/tps/LICENSE.md).
-Some original Substance Painter materials were kindly provided by GameTextures.com, as stated in the source license.
+## City Soldier (outdated)
 
-Changes: selected meshes extracted from `level/geometry/models/props.glb`,
-unused buffers removed, meshes centered/scaled in game, textures resized to at most
-1024 pixels and applied to new geometry. All selected art and adaptations remain
-available under CC-BY 3.0. No demo gameplay scripts or complete levels are included.
-`vendor/tps/manifest.json` records original downloaded files and hashes.
+- Author: buh (https://sketchfab.com/buh-late)
+- Original: https://sketchfab.com/3d-models/city-soldier-outdated-636b5a7c7e0c400abda269ba382f3252
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/perara-libs/3d-models/HEAD/city_soldier/soldier.gltf
+- Files: `vendor/city-soldier/`
 
-The map layout, tactical weapon, guard meshes, game UI, gameplay scripts, and
-synthesized audio are newly created for this independent prototype. No assets,
-code or save data from `/workspace/godot` are referenced.
+## M4A1 With Hands And Animations
 
-## Quaternius — CC0
+- Author: BillyTheKid (https://sketchfab.com/FGmodels)
+- Original: https://sketchfab.com/3d-models/m4a1-with-hands-and-animations-79524d1b74e24962979127cbb5c0b55b
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/jerzakm/three-threlte-fps/HEAD/static/models/m4.gltf
+- Files: `vendor/finished-m4/`
 
-Rifle and animated male character: **Quaternius**, *Animated FPS Guns (June 2018)*
-and *Animated Men Characters (February 2019)*.
-Official creator: https://quaternius.com/
-Downloaded from the public mirror https://github.com/beep2bleep/FreeAssetsByKenneyNLandQuaternius
-under its included `FreeModels by Quaternius[Patreon]/License.txt`.
-License: **CC0 1.0**, https://creativecommons.org/publicdomain/zero/1.0/.
-Local copy: [vendor/quaternius/LICENSE.txt](vendor/quaternius/LICENSE.txt).
-Source FBX files are included under `vendor/quaternius/source/`. Adaptations: FBX converted to glTF, rifle materials
-recolored and static bind mesh exported; idle/walk/run/death character animation
-tracks converted, runtime weapon pose and equipment added. FBX-derived zero-alpha materials were corrected to opaque. These models replace
-the initial procedural rifle and character body. Sleeves, gloves, equipment and
-weapon sight geometry are original additions.
+## Dirty oil barrel - 5MB
 
-## ambientCG / Poly Haven — CC0
+- Author: adventurer (https://sketchfab.com/ahmagh2e)
+- Original: https://sketchfab.com/3d-models/dirty-oil-barrel-5mb-b973a95ff3bb478a941ccb06a70b14bb
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/KurbyDoo/ZombieExpress/HEAD/assets/models/items/fuels/oil_barrel/oil_barrel.gltf
+- Files: `vendor/oil-barrel/`
 
-Photographic PBR textures **Asphalt021, Concrete012, Bricks066, Metal063** by
-**Lennart Demes / ambientCG**, https://ambientcg.com/ (CC0 1.0).
-HDR sky **kloppenheim_06_puresky** from **Poly Haven**,
-https://polyhaven.com/a/kloppenheim_06_puresky (CC0 1.0).
-Downloaded via the public asset mirror:
-https://github.com/petroulacl/fps-buildings-env-kit
-See `vendor/ambientcg/SOURCE-README.md` for its original credits.
-Texture JPGs resized from 2K to 1K for this prototype; normal maps use OpenGL
-orientation. HDR panorama retained at 2K. Source file hashes are recorded in
-`vendor/ambientcg/manifest.json`.
+## Plastic Crate
 
-## Flat Guns / recorded audio — CC0
+- Author: Denisse Rodriguez (https://sketchfab.com/DenisseRodriguez)
+- Original: https://sketchfab.com/3d-models/plastic-crate-5f7103bfb5974eab85bb1a4ab8a8595e
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/bladnman/basketball_tracker/HEAD/assets/plastic_crate/scene.gltf
+- Files: `vendor/plastic-crate/`
 
-The final playable carbine is **Flat Guns West / Rifle_Assault_West**, from
-https://opengameart.org/content/cc0-flat-guns-west, licensed CC0.
-AR-15 gunshot recording: **The Free Firearm Sound Library**,
-https://opengameart.org/content/the-free-firearm-sound-library (CC0).
-Stone footsteps: **Fantozzi's Footsteps**,
-https://opengameart.org/content/fantozzis-footsteps-grasssand-stone (CC0).
-Files downloaded from https://github.com/petroulacl/fps-asset-kit;
-`vendor/flatguns/SOURCE-README.md` preserves the source credit and license summary.
-Changes: carbine scaled and given an added sight; firearm audio trimmed to its
-attack/tail, mono 44.1kHz Ogg conversion with tail fade. The original WAV remains
-included. The earlier Quaternius rifle source is retained but is not used by the
-final carbine. Footstep pitch varies slightly at runtime.
+## Wooden Crate
 
-## Art upgrade slice: Unvanquished human
+- Author: Memorie (https://sketchfab.com/Memorie)
+- Original: https://sketchfab.com/3d-models/wooden-crate-2a3ac54357bb4b92bfbc119111c09fd1
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/mahdyfalah/tank-game/HEAD/assets/models/wooden_crate/scene.gltf
+- Files: `vendor/wooden-crate/`
 
-Human body, face, helmet, armor, textures and animation source:
-https://github.com/UnvanquishedAssets/res-players_src.dpkdir/tree/master/models/players/human_male
-Copyright: Unvanquished asset creators and contributors; original author history is
-retained at the linked source repository.
-Media license: **CC-BY-SA 2.5**, as declared by the project's media license:
-https://github.com/Unvanquished/Unvanquished/blob/master/pkg/unvanquished_src.dpkdir/COPYING.txt
-Local declaration: `vendor/unvanquished/LICENSE.txt`.
-The adapted `soldier.glb` is distributed under that same license. Changes: original
-Blender source converted to glTF, materials rebuilt from the original diffuse and
-normal maps, selected idle/walk/run/fire actions baked, unrelated scene props
-removed. Original Blender file retained in `source/`; original texture URLs and
-hashes recorded in SOURCE.json; textures are embedded in the GLB.
-Only guard 0 uses this art slice; other guards retain the earlier model for comparison.
+## pallet truck
 
-## Art upgrade slice: community FPS viewmodel
+- Author: Kwon_Hyuk (https://sketchfab.com/Kwon_Hyuk)
+- Original: https://sketchfab.com/3d-models/pallet-truck-0419ee072fa4427aaadc2afbcae2894d
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/AouladLahceneOussama/3D-bin-packing/HEAD/models/pallet_truck/scene.gltf
+- Files: `vendor/pallet-truck/`
 
-First-person arms, weapon and animations by **bukkbeek**:
-https://github.com/bukkbeek/GodotFPS-Template
-Included file: `resources/player/fps_demo_arms.glb`.
-The author's LICENSE and complete README are retained under `vendor/fps-community/`.
-The README permits use/fork/edit, but additionally prohibits reselling original
-assets; this is **not labeled CC0**. This free prototype includes attribution and
-redistributes the file as part of the project, not as a paid asset pack. Revisit
-these additional terms before selling standalone assets or changing distribution.
-No third-party audio, VFX or Mesh2Motion animations from that template are copied.
-Changes: select assault-rifle geometry only, runtime material overrides, integrate
-shoot/reload/treatment clips with our own inventory and weapon logic.
+## Industrial Electrical Box
 
-## Contemporary military adaptation
+- Author: VRTESTER (https://sketchfab.com/VRTESTER)
+- Original: https://sketchfab.com/3d-models/industrial-electrical-box-de13c96dad014bf098df03030f314fee
+- License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+- Download mirror: https://raw.githubusercontent.com/namannpatel/AbhyasAR/HEAD/Assets/ImportedModels/ElectricalCabinet/ElectricalCabinet/scene.gltf
+- Files: `vendor/power-cabinet/`
 
-The previous sci-fi soldier GLB and extracted maps are no longer used or shipped.
-`modern_guard.glb` adapts the same licensed human/rig source, while removing all
-original external armor and the enclosed helmet. New work: baked woodland fabric,
-open ballistic helmet, plate carrier, shoulder webbing, magazine pouches/MOLLE,
-radio, antenna, utility belt and patrol pack. New equipment is rigidly skinned to
-the original skeleton. This derived character is likewise CC-BY-SA 2.5.
-Rebuild in Blender with `--disable-autoexec --python tools/build_modern_guard.py`;
-original source and required head map are retained in the ignored `source/` folder.
-All five enemy instances now use the modern adaptation.
-The community viewmodel now supplies arm motion only: the final weapon silhouette
-is the separately credited Flat Guns carbine. Arms have authored sleeve/glove
-vertex colors, and the carbine's own magazine bone is animated during reload.
+## Integration changes to CC-BY 4.0 assets
 
-Additional adaptation details: generated garment UV color bake replaces the original
-science-fiction undersuit texture; external equipment is newly authored geometry,
-rigidly weighted to the existing rig. The equipment positions are expressed in the
-armature's local bind space. Source head texture is retained separately for rebuilds.
-First-person arms additionally have vertex-painted cloth/glove regions. The weapon
-uses its own magazine bone; no community gun mesh is rendered. Metal063 PBR maps
-are reused on shipping containers and existing industrial cases are color-graded.
+City Soldier retains the artist's original body, armor, pouches, boots, helmet,
+backpack and PBR texture maps. The original bundle's optional AK74 meshes had
+missing texture files in the mirror: those weapon nodes are excluded from the
+rendered scene; placeholder references in their unused material are redirected to
+an existing image. No character equipment geometry was fabricated or replaced.
+The project adds bone aiming and locomotion controls. Metallic/roughness values
+on cloth are normalized for Godot; original diffuse and normal maps are retained.
+
+M4A1 retains the artist's sleeves, gloves, watch, gun, textures and native draw,
+idle, firing and reload clips. The optional magnifier is hidden to use the
+original holographic sight at 1x. Lens material alpha is adapted for Godot.
+Third-person instances hide the first-person arms. Import-generated collision
+objects are disabled: explicit game collision bodies supply physical interaction.
+Props are scaled and positioned; plastic/wood roughness is adapted for Godot.
+
+All these adaptations preserve attribution and remain under CC-BY 4.0:
+https://creativecommons.org/licenses/by/4.0/
+
+## Other retained resources
+
+- Industrial prop/metal resources: Godot TPS Demo, Juan Linietsky and Fernando
+  Miguel Calabró, CC-BY 3.0. https://github.com/godotengine/tps-demo . Original
+  license is retained in `vendor/tps/LICENSE.md`.
+- Asphalt021, Concrete012, Bricks066, Metal063: Lennart Demes / ambientCG,
+  CC0. https://ambientcg.com . Current diffuse/normal/roughness maps are 2K;
+  ambient occlusion maps are used where available. Original mirror metadata and
+  license are retained in `vendor/ambientcg/`.
+- Sky: Poly Haven kloppenheim_06_puresky, CC0.
+  https://polyhaven.com/a/kloppenheim_06_puresky
+- AR-15 recording: The Free Firearm Sound Library, CC0.
+  https://opengameart.org/content/the-free-firearm-sound-library
+- Footsteps: Fantozzi's Footsteps, CC0.
+  https://opengameart.org/content/fantozzis-footsteps-grasssand-stone
+  Audio sources, license and original WAV remain in `vendor/flatguns/`.
+
+No source or asset from the previous `/workspace/godot` game is referenced.

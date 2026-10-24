@@ -15,11 +15,15 @@ func run():
 	await frames(4)
 	check(raid.enemies.size()==5,"five guards spawned")
 	for soldier in raid.enemies:
-		check(soldier.find_child("Modern_ballistic_helmet",true,false)!=null and soldier.find_child("armor_chest",true,false)==null,"every enemy uses contemporary gear without sci-fi plates")
-	var human=raid.enemies[0].find_child("body",true,false)
+		check(detail_mesh(soldier,"b_pack")!=null and detail_mesh(soldier,"bproof")!=null,"every enemy has artist-authored backpack and armor meshes")
+	var human=detail_mesh(raid.enemies[0],"bproof")
 	check(human!=null and human.mesh.surface_get_material(0).albedo_color.a>.99 and human.mesh.surface_get_material(0).transparency==BaseMaterial3D.TRANSPARENCY_DISABLED,"converted character materials are opaque and renderable")
 	check(human.mesh.surface_get_material(0).albedo_texture!=null,"upgraded enemy uses original photographic/detail texture")
 	check(raid.player.weapon.has_meta("anim"),"first-person weapon has an imported animation player")
+	var colliders_disabled=true
+	for body in raid.player.weapon.find_children("*","CollisionObject3D",true,false):
+		if body.collision_layer!=0:colliders_disabled=false
+	check(colliders_disabled,"imported first-person art cannot displace or obstruct the player")
 	var used={}
 	for enemy in raid.enemies:
 		check(not used.has(enemy.position),"spawn points unique");used[enemy.position]=true
@@ -48,10 +52,10 @@ func run():
 	check(raid.player.health==100 and raid.bag.count("med")==meds-1,"healing consumes dressing once")
 	raid.player.damage(30);raid.player.heal();raid.player.damage(1)
 	check(raid.player.action=="" and raid.bag.count("med")==meds-1,"damage interrupts treatment without consuming medicine")
+	var gun_rig:Skeleton3D=raid.player.weapon.find_children("*","Skeleton3D",true,false)[0];var magazine_bone=gun_rig.find_bone("j_reload_08");var magazine_start=gun_rig.get_bone_global_pose(magazine_bone)
 	raid.player.magazine=7;var ammo=raid.bag.count("ammo");check(raid.player.reload_weapon(),"reload begins")
 	await frames(20)
-	var gun_rig=raid.player.weapon.get_meta("carbine_rig");var magazine_bone=gun_rig.find_bone("Magazine")
-	check(gun_rig.get_bone_pose_position(magazine_bone).distance_to(raid.player.weapon.get_meta("mag_rest"))>.01,"reload visibly moves the actual carbine magazine")
+	check(not gun_rig.get_bone_global_pose(magazine_bone).is_equal_approx(magazine_start),"artist reload animation moves the original weapon rig")
 	raid.player.action_timer=.001;await frames(2)
 	check(raid.player.magazine==30 and raid.bag.count("ammo")==ammo-23,"reload conserves cartridges")
 	# UI callbacks exercise transfer, repeat pickup prevention, and dropping.
@@ -109,3 +113,10 @@ func run():
 	check(not raid.active and raid.saved_credits==credits,"death loses current raid cargo without crediting bank")
 	print("FREIGHT_SMOKE_RESULT checks=",checks," failures=",failed)
 	raid.queue_free();await frames(2);quit(0 if failed==0 else 1)
+
+func detail_mesh(node:Node,token:String):
+	for mesh in node.find_children("*","MeshInstance3D",true,false):
+		for i in mesh.mesh.get_surface_count():
+			var m=mesh.mesh.surface_get_material(i)
+			if m is StandardMaterial3D and m.albedo_texture and token in m.albedo_texture.resource_path:return mesh
+	return null

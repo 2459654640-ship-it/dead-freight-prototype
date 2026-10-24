@@ -1,0 +1,14 @@
+{
+  "url": "https://raw.githubusercontent.com/jerzakm/three-threlte-fps/HEAD/static/models/m4.gltf",
+  "asset": {
+    "extras": {
+      "author": "BillyTheKid (https://sketchfab.com/FGmodels)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/m4a1-with-hands-and-animations-79524d1b74e24962979127cbb5c0b55b",
+      "title": "M4A1 With Hands And Animations"
+    },
+    "generator": "Sketchfab-15.27.0",
+    "version": "2.0"
+  },
+  "sha256": "98341de951fd1476624f14016f6f260ef754b9a6cd9f780517e56b0bda7ddfec"
+}

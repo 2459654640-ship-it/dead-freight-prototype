@@ -35,7 +35,7 @@ func _ready():
 	var c=CollisionShape3D.new();c.shape=capsule;c.position.y=.9;add_child(c)
 	head=Node3D.new();add_child(head);head.position.y=1.64
 	camera=Camera3D.new();head.add_child(camera);camera.current=true;camera.fov=78;camera.near=.04;camera.far=150
-	weapon=Kit.gun(camera);weapon.position=Vector3(.18,-.13,-.15)
+	weapon=Kit.gun(camera);weapon.position=Vector3.ZERO
 	flash=Kit.box(weapon,Vector3(0,-.12,-1.16),Vector3(.065,.065,.18),Color("ffd793"))
 	flash.material_override=Kit.mat(Color("ffda83"),0,3);flash.visible=false
 	floor_snap_length=.2;floor_max_angle=deg_to_rad(46)
@@ -95,7 +95,7 @@ func _physics_process(delta):
 	camera.rotation.z=lerpf(camera.rotation.z,-input.x*.012,1-exp(-10*delta))
 	recoil_offset=move_toward(recoil_offset,0,delta*.24)
 	mouse_sway=mouse_sway.lerp(Vector2.ZERO,1-exp(-10*delta))
-	var offset=Vector3(0,-.06,-.10) if aiming else Vector3(.18,-.13,-.15)
+	var offset=Vector3(-.09,.0114,.15) if aiming else Vector3.ZERO
 	if action=="RELOADING":offset+=Vector3(.09,-.20,.12)
 	elif action=="TREATING":offset.y-=.4
 	elif sprinting:offset+=Vector3(.02,-.08,.07)
@@ -104,10 +104,6 @@ func _physics_process(delta):
 	offset+=Vector3(-mouse_sway.x,mouse_sway.y,0).limit_length(.04)
 	weapon.position=weapon.position.lerp(offset,1-exp(-16*delta))
 	weapon.rotation.z=lerpf(weapon.rotation.z,-.25 if action=="RELOADING" else 0.0,1-exp(-12*delta))
-	if weapon.has_meta("carbine_rig") and weapon.has_meta("mag_rest"):
-		var gun_rig:Skeleton3D=weapon.get_meta("carbine_rig");var magazine_bone=gun_rig.find_bone("Magazine")
-		var magazine_motion=sin(PI*clampf(1-action_timer/action_total,0,1)) if action=="RELOADING" else 0.0
-		gun_rig.set_bone_pose_position(magazine_bone,weapon.get_meta("mag_rest")+Vector3(0,0,-.20*magazine_motion))
 	flash.visible=shot_timer>.065
 	update_interaction(delta,blocked)
 func fire()->bool:
@@ -168,9 +164,10 @@ func update_interaction(delta:float,blocked:bool):
 func play_view_animation(clip:String,duration:float=0):
 	if not weapon.has_meta("anim"):return
 	var anim:AnimationPlayer=weapon.get_meta("anim")
+	clip={"assualt_fire":"h2_skeleton|fire1","assualt_reload":"h2_skeleton|reload","heal":"h2_skeleton|idle"}.get(clip,clip)
 	anim.speed_scale=anim.get_animation(clip).length/duration if duration>0 else 1.0
 	anim.stop();anim.play(clip)
 func reset_view_pose():
 	if weapon.has_meta("anim"):
 		var anim:AnimationPlayer=weapon.get_meta("anim")
-		anim.speed_scale=1;anim.play("assualt_fire");anim.advance(0);anim.pause()
+		anim.speed_scale=1;anim.play("h2_skeleton|idle");anim.advance(0);anim.pause()

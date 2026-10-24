@@ -127,7 +127,9 @@ PERSONNEL ONLY",19,Color("dbac64"))
 		for z in [-13,-6]:
 			for level in [.4,1.5,2.6]:
 				structure(Vector3(x,level,z),Vector3(2,.13,3.8),steel)
-				for dz in [-1.1,.4]:Kit.prop(self,Vector3(x,level+.07,z+dz),"crate",.65)
+				for dz in [-1.1,.4]:
+					if dz<0:Kit.imported_prop(self,Vector3(x,level+.07,z+dz),"res://assets/vendor/wooden-crate/scene.gltf",.65)
+					else:Kit.prop(self,Vector3(x,level+.07,z+dz),"crate",.65)
 			for dx in [-.94,.94]:
 				for dz in [-1.8,1.8]:Kit.box(self,Vector3(x+dx,1.5,z+dz),Vector3(.10,3,.10),Color("4d605e"))
 	# The warehouse art slice: wall piers, foundation skirting, wiring and practical lamps.
@@ -140,6 +142,14 @@ PERSONNEL ONLY",19,Color("dbac64"))
 	for z in [-15,-7]:
 		Kit.box(self,Vector3(-23.5,1.4,z),Vector3(.14,.7,.45),Color("495a58"))
 		Kit.box(self,Vector3(-23.40,1.5,z),Vector3(.015,.09,.09),Color("d8a35c")).material_override=Kit.mat(Color("d8a35c"),0,.6)
+	# Authored industrial equipment, with explicit map collision and navigation footprints.
+	Kit.imported_prop(self,Vector3(-20,.1,-17.8),"res://assets/vendor/power-cabinet/scene.gltf",1.85)
+	structure(Vector3(-20,1,-17.8),Vector3(1.0,1.8,.6),steel).visible=false
+	var truck=Kit.imported_prop(self,Vector3(-17,.1,-3),"res://assets/vendor/pallet-truck/scene.gltf",1.3);truck.rotation.y=.4
+	structure(Vector3(-17,.5,-3),Vector3(1.1,1,1.8),steel).visible=false
+	for stack in 3:
+		Kit.imported_prop(self,Vector3(-11,.1+stack*.75,-16.5),"res://assets/vendor/wooden-crate/scene.gltf",.75)
+	structure(Vector3(-11,1.2,-16.5),Vector3(1.0,2.3,1),steel).visible=false
 	# Medical office, two doors, glazed windows in the west wall.
 	structure(Vector3(17,.07,-10),Vector3(16,.14,16),concrete,false)
 	structure(Vector3(17,1.8,-18),Vector3(16,3.6,.3),brick)
@@ -179,7 +189,7 @@ PERSONNEL ONLY",19,Color("dbac64"))
 			Kit.prop(self,b,"barrel",1.15)
 	# Imported industrial props with local matching static collision.
 	for p in [Vector3(-16,0,-10),Vector3(-17,0,-14),Vector3(4,0,6),Vector3(29,0,13)]:
-		structure(p+Vector3(0,.5,0),Vector3(1.65,1,2),steel).visible=false
+		structure(p+Vector3(0,.325,0),Vector3(1.4,.65,1.1),steel).visible=false
 		Kit.prop(self,p,"cargo",1)
 	for p in [Vector3(-22,0,6),Vector3(26,0,-7),Vector3(-5,0,22)]:Kit.prop(self,p,"pallet",.16)
 	for p in [Vector3(-26,0,-17),Vector3(26,0,-16)]:
@@ -227,7 +237,8 @@ func make_loot(pos:Vector3,title:String,contents:Array,size:Vector3,color:Color)
 	var body=StaticBody3D.new();add_child(body);body.position=pos;body.collision_layer=8
 	body.set_meta("loot",contents.duplicate(true));body.set_meta("title",title)
 	var c=CollisionShape3D.new();var shape=BoxShape3D.new();shape.size=size;c.shape=shape;body.add_child(c)
-	Kit.box(body,Vector3.ZERO,size,color)
+	var prop_path="res://assets/vendor/plastic-crate/scene.gltf" if "MEDICAL" in title else "res://assets/vendor/wooden-crate/scene.gltf"
+	Kit.imported_prop(body,Vector3(0,-size.y/2,0),prop_path,size.y)
 	for dx in [-.28,.28]:Kit.box(body,Vector3(dx*size.x,0,size.z/2+.006),Vector3(.045,size.y*.9,.018),Color("343f3b"))
 	Kit.box(body,Vector3(0,size.y/2+.01,0),Vector3(size.x*.3,.02,.06),Color("c6c9a7"))
 	loot.append(body);return body

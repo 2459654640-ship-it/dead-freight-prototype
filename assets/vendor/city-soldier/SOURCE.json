@@ -1,0 +1,14 @@
+{
+  "url": "https://raw.githubusercontent.com/perara-libs/3d-models/HEAD/city_soldier/soldier.gltf",
+  "asset": {
+    "extras": {
+      "author": "buh (https://sketchfab.com/buh-late)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/city-soldier-outdated-636b5a7c7e0c400abda269ba382f3252",
+      "title": "City Soldier (outdated)"
+    },
+    "generator": "Sketchfab-16.0.0",
+    "version": "2.0"
+  },
+  "sha256": "60d983d7931363aa859eb691f1e45709fea8f14cc8f69a9b68d8813e4b657744"
+}
