@@ -14,7 +14,7 @@ cd /workspace/extraction-prototype
 ./tools/run.sh
 ```
 
-脚本把配置、导入缓存之外的用户数据放在本项目 `.runtime/` 下；直接从编辑器启动时，Godot 使用独立的 `dead-freight-prototype` 用户目录。没有引用、复制或修改 `/workspace/godot` 中的代码、素材或存档，两者可分别打开和运行。此项目使用完全独立的 Git 仓库：https://github.com/limigze0531-ui/dead-freight-prototype ，不关联旧项目的 Git 历史。
+脚本把配置、导入缓存之外的用户数据放在本项目 `.runtime/` 下；直接从编辑器启动时，Godot 使用独立的 `dead-freight-prototype` 用户目录。没有引用、复制或修改 `/workspace/godot` 中的代码、素材或存档，两者可分别打开和运行。此项目使用完全独立的 Git 仓库：https://github.com/2459654640-ship-it/dead-freight-prototype ，不关联旧项目的 Git 历史。
 
 ## 玩法
 
