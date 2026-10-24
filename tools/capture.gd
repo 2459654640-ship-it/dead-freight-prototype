@@ -20,7 +20,10 @@ func run():
 	var guard=raid.enemies[0];guard.position=Vector3(-14,.05,-7);guard.model.rotation.y=PI
 	raid.player.position=Vector3(-14,.05,-3.5);raid.player.rotation=Vector3.ZERO;raid.player.pitch=-.03
 	await capture("contact")
+	Input.action_press("aim");await wait_frames(25);await capture("aiming");Input.action_release("aim")
+	raid.player.magazine=15;raid.player.reload_weapon();await wait_frames(8);await capture("reloading")
+	raid.player.action="";raid.player.reset_view_pose()
 	print("CONTACT camera=",raid.player.camera.global_position," enemy=",guard.global_position)
 	raid.hud.open_inventory(raid.loot[1]);await capture("inventory")
-	print("FREIGHT_GRAPHICS_RESULT captures=5")
+	print("FREIGHT_GRAPHICS_RESULT captures=7")
 	quit()

@@ -61,3 +61,33 @@ Changes: carbine scaled and given an added sight; firearm audio trimmed to its
 attack/tail, mono 44.1kHz Ogg conversion with tail fade. The original WAV remains
 included. The earlier Quaternius rifle source is retained but is not used by the
 final carbine. Footstep pitch varies slightly at runtime.
+
+## Art upgrade slice: Unvanquished human
+
+Human body, face, helmet, armor, textures and animation source:
+https://github.com/UnvanquishedAssets/res-players_src.dpkdir/tree/master/models/players/human_male
+Copyright: Unvanquished asset creators and contributors; original author history is
+retained at the linked source repository.
+Media license: **CC-BY-SA 2.5**, as declared by the project's media license:
+https://github.com/Unvanquished/Unvanquished/blob/master/pkg/unvanquished_src.dpkdir/COPYING.txt
+Local declaration: `vendor/unvanquished/LICENSE.txt`.
+The adapted `soldier.glb` is distributed under that same license. Changes: original
+Blender source converted to glTF, materials rebuilt from the original diffuse and
+normal maps, selected idle/walk/run/fire actions baked, unrelated scene props
+removed. Original Blender file retained in `source/`; original texture URLs and
+hashes recorded in SOURCE.json; textures are embedded in the GLB.
+Only guard 0 uses this art slice; other guards retain the earlier model for comparison.
+
+## Art upgrade slice: community FPS viewmodel
+
+First-person arms, weapon and animations by **bukkbeek**:
+https://github.com/bukkbeek/GodotFPS-Template
+Included file: `resources/player/fps_demo_arms.glb`.
+The author's LICENSE and complete README are retained under `vendor/fps-community/`.
+The README permits use/fork/edit, but additionally prohibits reselling original
+assets; this is **not labeled CC0**. This free prototype includes attribution and
+redistributes the file as part of the project, not as a paid asset pack. Revisit
+these additional terms before selling standalone assets or changing distribution.
+No third-party audio, VFX or Mesh2Motion animations from that template are copied.
+Changes: select assault-rifle geometry only, runtime material overrides, integrate
+shoot/reload/treatment clips with our own inventory and weapon logic.

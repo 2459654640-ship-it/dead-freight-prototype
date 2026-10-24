@@ -44,7 +44,7 @@ func setup_environment():
 	e.background_mode=Environment.BG_SKY
 	var sky=Sky.new();var sm=ProceduralSkyMaterial.new()
 	sm.sky_top_color=Color("355765");sm.sky_horizon_color=Color("bdc5c0");sm.ground_horizon_color=Color("bdc5c0");sm.ground_bottom_color=Color("393f3d");sm.sun_angle_max=6;sm.sun_curve=.06
-	var panorama=PanoramaSkyMaterial.new();panorama.panorama=load("res://assets/vendor/ambientcg/sky.hdr");sky.sky_material=panorama;e.sky=sky;e.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;e.ambient_light_color=Color("acc3ca");e.ambient_light_energy=.43
+	var panorama=PanoramaSkyMaterial.new();panorama.panorama=load("res://assets/vendor/ambientcg/sky.hdr");sky.sky_material=panorama;e.sky=sky;e.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;e.ambient_light_color=Color("acc3ca");e.ambient_light_energy=.24
 	e.tonemap_mode=Environment.TONE_MAPPER_FILMIC;e.tonemap_exposure=.95
 	e.fog_enabled=true;e.fog_light_color=Color("9aadae");e.fog_light_energy=.7;e.fog_density=.002
 	var sun=DirectionalLight3D.new();add_child(sun);sun.rotation_degrees=Vector3(-31,-38,0);sun.light_color=Color("ffdcaa");sun.light_energy=1.15;sun.shadow_enabled=true;sun.directional_shadow_max_distance=100;sun.shadow_bias=.07
@@ -127,9 +127,19 @@ PERSONNEL ONLY",19,Color("dbac64"))
 		for z in [-13,-6]:
 			for level in [.4,1.5,2.6]:
 				structure(Vector3(x,level,z),Vector3(2,.13,3.8),steel)
-				for dz in [-1.1,.4]:Kit.box(self,Vector3(x,level+.4,z+dz),Vector3(1.3,.7,.95),Color("8d8061"))
+				for dz in [-1.1,.4]:Kit.prop(self,Vector3(x,level+.07,z+dz),"crate",.65)
 			for dx in [-.94,.94]:
 				for dz in [-1.8,1.8]:Kit.box(self,Vector3(x+dx,1.5,z+dz),Vector3(.10,3,.10),Color("4d605e"))
+	# The warehouse art slice: wall piers, foundation skirting, wiring and practical lamps.
+	for z in [-17,-11,-5,1]:
+		for x in [-23.7,-4.3]:
+			Kit.box(self,Vector3(x,2.2,z),Vector3(.22,4.4,.28),Color("424c49"))
+	for x in [-23.65,-4.35]:
+		Kit.box(self,Vector3(x,.3,-8),Vector3(.20,.6,21.5),Color("555b55"))
+		for y in [3.5,3.65]:Kit.cylinder(self,Vector3(x,y,-8),.035,21,Color("5a635d")).rotation.x=PI/2
+	for z in [-15,-7]:
+		Kit.box(self,Vector3(-23.5,1.4,z),Vector3(.14,.7,.45),Color("495a58"))
+		Kit.box(self,Vector3(-23.40,1.5,z),Vector3(.015,.09,.09),Color("d8a35c")).material_override=Kit.mat(Color("d8a35c"),0,.6)
 	# Medical office, two doors, glazed windows in the west wall.
 	structure(Vector3(17,.07,-10),Vector3(16,.14,16),concrete,false)
 	structure(Vector3(17,1.8,-18),Vector3(16,3.6,.3),brick)

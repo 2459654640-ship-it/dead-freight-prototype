@@ -2,6 +2,14 @@
 
 完全独立的 **Godot 4.6.3 标准版**单人搜打撤 FPS 原型。
 
+## 免费素材画质样片
+
+这一版先验证一小段：**第 1 名敌人**换为 Unvanquished 的带纹理、分件护甲和骨骼动画人物；其他敌人保留原模型作比较。第一人称替换为社区的手臂/步枪，并接入射击、换弹及治疗动画。仓库增加结构、管线、电箱与货架道具，降低环境补光。
+
+[敌人升级前](docs/before-contact.png) · [升级后](docs/contact.png) · [仓库升级前](docs/before-warehouse.png) · [升级后](docs/warehouse.png) · [瞄准](docs/aiming.png) · [换弹动作](docs/reloading.png)
+
+这是免费素材整合的第一轮样片，人物装备仍偏科幻，手臂和武器仍偏简化风格，尚未完成全场景写实美术统一。新人物衍生素材采用 CC-BY-SA；社区第一人称资源另有禁止转售原始素材的条款，完整说明在 assets/ATTRIBUTION.md。
+
 ## 立即运行
 
 使用 Godot 4.6.3 打开本目录 `project.godot`，等待首次导入，按 **F6/F5**，点击 **DEPLOY** 开始。

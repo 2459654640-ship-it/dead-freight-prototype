@@ -14,8 +14,10 @@ func run():
 	raid=load("res://scenes/raid.tscn").instantiate();root.add_child(raid);current_scene=raid
 	await frames(4)
 	check(raid.enemies.size()==5,"five guards spawned")
-	var human=raid.enemies[0].find_child("BaseHuman",true,false)
+	var human=raid.enemies[0].find_child("body",true,false)
 	check(human!=null and human.mesh.surface_get_material(0).albedo_color.a>.99 and human.mesh.surface_get_material(0).transparency==BaseMaterial3D.TRANSPARENCY_DISABLED,"converted character materials are opaque and renderable")
+	check(human.mesh.surface_get_material(0).albedo_texture!=null,"upgraded enemy uses original photographic/detail texture")
+	check(raid.player.weapon.has_meta("anim"),"first-person weapon has an imported animation player")
 	var used={}
 	for enemy in raid.enemies:
 		check(not used.has(enemy.position),"spawn points unique");used[enemy.position]=true

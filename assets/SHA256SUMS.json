@@ -1,5 +1,5 @@
 {
-  "ATTRIBUTION.md": "fe720fdd8d09c87bc041ca44984d54177abaa558eee864dfa62e632a47281eef",
+  "ATTRIBUTION.md": "a134908f71459e57cf475c6ba039d8ba03f7142f6a2490ff81e27e6559d5a298",
   "vendor/ambientcg/Asphalt021_Color.jpg": "2497dbad7e74f74b385052517fce6310fa9bb6fd8dca3e3d15da0811185f6be6",
   "vendor/ambientcg/Asphalt021_NormalGL.jpg": "3784cebd03d9e653953d64e2b82bf42804970ae6f15e8d0eec2b5d37082abcd9",
   "vendor/ambientcg/Asphalt021_Roughness.jpg": "497bf4cba1b9383f503c2c5920ec7e4a5ba2404412fc22bf3712fc99f58a553d",
@@ -23,6 +23,10 @@
   "vendor/flatguns/shot.ogg": "8fa8f6016b9738e93be38909fee97daf9deb287fceca2d44ce6276e74ad8cc37",
   "vendor/flatguns/stepL1.ogg": "2d85768f04a85b6068f3548b33d6e0b0424c5e62b0941042d593affd3a9555d4",
   "vendor/flatguns/stepR1.ogg": "d6949efd0255d50efe4853cc077b18e3ee96b155707ccf4199fd530aaac82d58",
+  "vendor/fps-community/LICENSE": "ee5b420f53450855ea075eba67c0cb87247618240a138ebb7317c9c77e2adad8",
+  "vendor/fps-community/REVISION.txt": "3e480b635c1baa683e8ad6ca43f52a59372aa154a84d6e63696ea70f1ca5bf91",
+  "vendor/fps-community/SOURCE.md": "f33e5ff58133230ec127cdeb34ad4e51b78c5399e7df62f6ec83897f6ed3fae3",
+  "vendor/fps-community/viewmodel.glb": "e810b2cd473a4db2fb98b71a2a495474934fdf29313ea31c56e24cb14b52953b",
   "vendor/quaternius/LICENSE.txt": "20b983ae0e2e555817495a65c37519bfcb2231825269db6a57d72c51ed6006e3",
   "vendor/quaternius/rifle.glb": "7970c4fc83111b70d8d7e0478e70f8ca5724ecfd8111f24dd06638b58c85b5ec",
   "vendor/quaternius/scavenger.glb": "024cd107a141038532dd55d7ef85590094991200db17d9e39d97c722ae70fcba",
@@ -62,5 +66,18 @@
   "vendor/tps/level/textures/structure/tile_steel_orm.png": "a8ea1cc25fc243a07d6632dcf7a15dc88dd4455ddce19ae383cec1eb428256c3",
   "vendor/tps/manifest.json": "28207f7c48a43207fb288d96db450276a9164544135c371d3f462e9f0e8b57ef",
   "vendor/tps/pallet.glb": "f8cadef41eeed19068d9a4d1e0a370b7c9fe9d8d967de919f1073077abea6dfc",
-  "vendor/tps/steel_beam.glb": "2a5787e5eb1446a8e25fe07d8a7aebe71cddbf3d5dbdcc33e1c824e80c8c8b2f"
+  "vendor/tps/steel_beam.glb": "2a5787e5eb1446a8e25fe07d8a7aebe71cddbf3d5dbdcc33e1c824e80c8c8b2f",
+  "vendor/unvanquished/LICENSE.txt": "1c4150cbf55a048e7fb563d6d26d12d66794017c77e723944f38cf23b49477c8",
+  "vendor/unvanquished/SOURCE.json": "310758ecbe870ed2aad9adf625391404cf28d80836f806512bfb037e43e070b9",
+  "vendor/unvanquished/soldier.glb": "45419eb436100bbe877beca14084095abe18ac7a83c9af3e9d0aef7600a0c541",
+  "vendor/unvanquished/soldier_armor.png": "927a312281a595cd5c4b0ecc3c43ece5f029bf55a57f4930b9ef2cca51b8694e",
+  "vendor/unvanquished/soldier_armor_n.png": "1be16b923bdfc87743ef07ad2b2c1f51224b20a38f155443636b3765a0427d3f",
+  "vendor/unvanquished/soldier_base.png": "2430d6ab2dfc930ca563a412a28fe81cffb458d2611c808a782bd9c366b08daf",
+  "vendor/unvanquished/soldier_base_n.png": "4902e30a6c729312f7ecc3a4eb0bed0d99a4805ccaa1dc25762dd5c76f7eef08",
+  "vendor/unvanquished/soldier_head.jpg": "589daceab1cdf906f04b3ece334794cddf125df886261da40c33ae4804667825",
+  "vendor/unvanquished/soldier_head_n.jpg": "fb5185960e5e1e9a02e4c6ac49b7322ba98ab0a75fc7a30d4564b8b92338ab1f",
+  "vendor/unvanquished/soldier_helmet.png": "8270e5c2560c32f695921a6fe5e11992cb248aeb50b6aa1406f43cb97fbf7dc2",
+  "vendor/unvanquished/soldier_helmet_n.png": "ff535e48c1a4129a42e9dbc9c20a01979bede65785b4614b776af984ecc006af",
+  "vendor/unvanquished/source/.gdignore": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "vendor/unvanquished/source/human.blend": "86b438e60a54ebc6ba93932dd0cc91f30af23ba0e555e4d47610de190e70ab7a"
 }

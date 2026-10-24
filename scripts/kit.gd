@@ -26,6 +26,15 @@ static func limb(parent:Node,a:Vector3,b:Vector3,radius:float,color:Color):
 	return m
 static func gun(parent:Node,first_person:bool=true)->Node3D:
 	var g=Node3D.new();parent.add_child(g)
+	if first_person:
+		var view=load("res://assets/vendor/fps-community/viewmodel.glb").instantiate();g.add_child(view)
+		for mesh in view.find_children("*","MeshInstance3D",true,false):
+			mesh.visible=mesh.name in ["fps_arms_extended","assualt","assualt_ammo"]
+			if mesh.name=="fps_arms_extended":mesh.material_override=mat(Color("9e8c74"))
+			elif mesh.visible:mesh.material_override=mat(Color("26332f"),.6)
+		var anim=view.find_children("*","AnimationPlayer",true,false)[0]
+		g.set_meta("anim",anim);anim.play("assualt_fire");anim.advance(0);anim.pause()
+		return g
 	var asset=load("res://assets/vendor/flatguns/carbine.glb").instantiate()
 	g.add_child(asset);asset.scale=Vector3.ONE*1.15;asset.position=Vector3(0,-.01,-.12)
 	if first_person:

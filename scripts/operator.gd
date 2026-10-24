@@ -35,8 +35,8 @@ func _ready():
 	var c=CollisionShape3D.new();c.shape=capsule;c.position.y=.9;add_child(c)
 	head=Node3D.new();add_child(head);head.position.y=1.64
 	camera=Camera3D.new();head.add_child(camera);camera.current=true;camera.fov=78;camera.near=.04;camera.far=150
-	weapon=Kit.gun(camera);weapon.position=Vector3(.25,-.24,-.43)
-	flash=Kit.box(weapon,Vector3(0,.005,-.54),Vector3(.065,.065,.18),Color("ffd793"))
+	weapon=Kit.gun(camera);weapon.position=Vector3(.18,-.13,-.15)
+	flash=Kit.box(weapon,Vector3(0,-.12,-1.16),Vector3(.065,.065,.18),Color("ffd793"))
 	flash.material_override=Kit.mat(Color("ffda83"),0,3);flash.visible=false
 	floor_snap_length=.2;floor_max_angle=deg_to_rad(46)
 func _unhandled_input(event):
@@ -95,7 +95,7 @@ func _physics_process(delta):
 	camera.rotation.z=lerpf(camera.rotation.z,-input.x*.012,1-exp(-10*delta))
 	recoil_offset=move_toward(recoil_offset,0,delta*.24)
 	mouse_sway=mouse_sway.lerp(Vector2.ZERO,1-exp(-10*delta))
-	var offset=Vector3(0,-.115,-.40) if aiming else Vector3(.25,-.24,-.43)
+	var offset=Vector3(0,.02,-.10) if aiming else Vector3(.18,-.13,-.15)
 	if action=="RELOADING":offset+=Vector3(.09,-.20,.12)
 	elif action=="TREATING":offset.y-=.4
 	elif sprinting:offset+=Vector3(.02,-.08,.07)
@@ -110,6 +110,7 @@ func fire()->bool:
 	if shot_timer>0 or action!="" or not raid.active:return false
 	if magazine<=0:
 		shot_timer=.2;raid.hud.toast("EMPTY MAGAZINE · R to reload");return false
+	play_view_animation("assualt_fire")
 	magazine-=1;shot_timer=.092;recoil.x+=.013 if aiming else .022;recoil.y=randf_range(-.05,.05);recoil_offset=.07
 	raid.sound.play("shot",Vector3.ZERO,-5);noise=1.6
 	var origin=camera.global_position
@@ -126,10 +127,12 @@ func fire()->bool:
 	return true
 func reload_weapon()->bool:
 	if action!="" or magazine>=30 or raid.bag.count("ammo")==0:return false
+	play_view_animation("assualt_reload",2.05)
 	action="RELOADING";action_total=2.05;action_timer=action_total;interact_progress=0
 	raid.sound.play("reload");return true
 func heal()->bool:
 	if action!="" or health>=100 or raid.bag.count("med")==0:return false
+	play_view_animation("heal",2.8)
 	action="TREATING";action_total=2.8;action_timer=action_total;interact_progress=0;return true
 func complete_action():
 	if action=="RELOADING":
@@ -137,10 +140,11 @@ func complete_action():
 		if amount>0 and raid.bag.remove("ammo",amount):magazine+=amount
 	elif action=="TREATING" and raid.bag.remove("med"):health=minf(100,health+55)
 	action="";action_timer=0
+	reset_view_pose()
 func damage(amount:float):
 	if not raid.active:return
 	health=maxf(0,health-amount);hurt_time=.65
-	if action=="TREATING":action="";raid.hud.toast("Treatment interrupted")
+	if action=="TREATING":action="";reset_view_pose();raid.hud.toast("Treatment interrupted")
 	if health<=0:raid.finish(false)
 func update_interaction(delta:float,blocked:bool):
 	var previous_target=interaction_target
@@ -156,3 +160,13 @@ func update_interaction(delta:float,blocked:bool):
 		if interact_progress>=1.2:
 			raid.hud.open_inventory(interaction_target);interact_progress=0
 	else:interact_progress=0
+
+func play_view_animation(clip:String,duration:float=0):
+	if not weapon.has_meta("anim"):return
+	var anim:AnimationPlayer=weapon.get_meta("anim")
+	anim.speed_scale=anim.get_animation(clip).length/duration if duration>0 else 1.0
+	anim.stop();anim.play(clip)
+func reset_view_pose():
+	if weapon.has_meta("anim"):
+		var anim:AnimationPlayer=weapon.get_meta("anim")
+		anim.speed_scale=1;anim.play("assualt_fire");anim.advance(0);anim.pause()
