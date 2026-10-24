@@ -1,6 +1,6 @@
 # DEAD FREIGHT / 失落货场
 
-完全独立的 **Godot 4.6.3 标准版**单人搜打撤 FPS 原型。
+完全独立的 **Godot 4.7.2 标准版**单人搜打撤 FPS 原型。
 
 ## 成品素材版本
 
@@ -14,9 +14,19 @@
 
 这是朝更成熟 FPS 观感推进的版本，并非已经完成商业级整关美术与动画。现成资源均有署名记录，见 [assets/ATTRIBUTION.md](assets/ATTRIBUTION.md)。
 
+## Windows 首次导入修复
+
+当前修复验证版本为 Godot 4.7.2 标准版。下载工程包后**完整解压到新目录**，不要复制旧 `.godot` 缓存。
+
+- 只想试玩：下载单独的 `DeadFreight-Play-4.7.2.zip`，把现有 `Godot_v4.7.2..._console.exe` 拖到 `Play_Windows.cmd` 上。它直接运行已经预导入的 PCK，不打开编辑器或重新导入资产。
+- 需要编辑：将 Godot EXE 拖到工程根目录 `Open_Editor_Windows.cmd`。脚本先无界面导入，再打开 Compatibility 编辑器，并保留退出代码与日志。
+- 失败日志：试玩包的 `logs/`；工程包的 `.runtime/logs/`。脚本窗口会保留，不会直接闪退关闭。
+
+新包包含资源 `.import` 设置，禁止模型名称触发多余碰撞生成，关闭不必要的 LOD/光照网格导入，串行导入贴图并启用显存压缩。原始贴图保留，导入尺寸上限为 2K。
+
 ## 立即运行
 
-使用 Godot 4.6.3 打开本目录 `project.godot`，等待首次导入，按 **F6/F5**，点击 **DEPLOY** 开始。
+使用 Godot 4.7.2 打开本目录 `project.godot`，等待首次导入，按 **F6/F5**，点击 **DEPLOY** 开始。
 不需要旧项目、C#、插件、账号或联网下载。Windows/macOS 可以直接用 Godot 编辑器打开。
 
 Linux：
