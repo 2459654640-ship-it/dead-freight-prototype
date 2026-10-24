@@ -23,22 +23,12 @@ func _ready():
 	collision_layer=4;collision_mask=1|2|4
 	var c=CollisionShape3D.new();var shape=CapsuleShape3D.new();shape.radius=.32;shape.height=1.78;c.shape=shape;c.position.y=.89;add_child(c)
 	model=Node3D.new();add_child(model)
-	var upgraded=ident==0
-	var visual=load("res://assets/vendor/unvanquished/soldier.glb" if upgraded else "res://assets/vendor/quaternius/scavenger.glb").instantiate();model.add_child(visual)
-	visual.scale=Vector3.ONE*(.13 if upgraded else .37);visual.rotation.y=PI/2 if upgraded else PI
+	var visual=load("res://assets/vendor/unvanquished/modern_guard.glb").instantiate();model.add_child(visual)
+	visual.scale=Vector3.ONE*.13;visual.rotation.y=PI/2
 	animation=visual.find_children("*","AnimationPlayer",true,false)[0]
 	rig=visual.find_children("*","Skeleton3D",true,false)[0]
 	for clip in animation.get_animation_list():animation.get_animation(clip).loop_mode=Animation.LOOP_LINEAR
 	animation.play("Man_Idle")
-	if not upgraded:
-		# Keep the imported leg animation, with a fixed two-handed weapon stance.
-		pose_arm("UpperArm.R","LowerArm.R",Vector3(-.45,3.82,0),Vector3(-.65,3.10,.45))
-		pose_arm("LowerArm.R","Palm.R",Vector3(-.65,3.10,.45),Vector3(-.25,3.35,1.10))
-		pose_arm("UpperArm.L","LowerArm.L",Vector3(.46,3.82,0),Vector3(.80,3.12,.50))
-		pose_arm("LowerArm.L","Palm.L",Vector3(.80,3.12,.50),Vector3(.10,3.35,1.25))
-		Kit.box(model,Vector3(0,1.20,-.17),Vector3(.42,.46,.16),Color("455345"))
-		for x in [-.13,0,.13]:Kit.box(model,Vector3(x,1.1,-.29),Vector3(.105,.18,.07),Color("69735b"))
-		Kit.cylinder(model,Vector3(0,1.77,0),.20,.18,Color("414e41"))
 	var gun=Kit.gun(model,false);gun.position=Vector3(.14,1.29,-.35)
 	muzzle=Kit.box(gun,Vector3(0,0,-.54),Vector3(.07,.07,.18),Color("ffd898"));muzzle.material_override=Kit.mat(Color("ffd898"),0,2);muzzle.visible=false
 	home=global_position;goal=home

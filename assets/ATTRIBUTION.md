@@ -91,3 +91,26 @@ these additional terms before selling standalone assets or changing distribution
 No third-party audio, VFX or Mesh2Motion animations from that template are copied.
 Changes: select assault-rifle geometry only, runtime material overrides, integrate
 shoot/reload/treatment clips with our own inventory and weapon logic.
+
+## Contemporary military adaptation
+
+The previous sci-fi soldier GLB and extracted maps are no longer used or shipped.
+`modern_guard.glb` adapts the same licensed human/rig source, while removing all
+original external armor and the enclosed helmet. New work: baked woodland fabric,
+open ballistic helmet, plate carrier, shoulder webbing, magazine pouches/MOLLE,
+radio, antenna, utility belt and patrol pack. New equipment is rigidly skinned to
+the original skeleton. This derived character is likewise CC-BY-SA 2.5.
+Rebuild in Blender with `--disable-autoexec --python tools/build_modern_guard.py`;
+original source and required head map are retained in the ignored `source/` folder.
+All five enemy instances now use the modern adaptation.
+The community viewmodel now supplies arm motion only: the final weapon silhouette
+is the separately credited Flat Guns carbine. Arms have authored sleeve/glove
+vertex colors, and the carbine's own magazine bone is animated during reload.
+
+Additional adaptation details: generated garment UV color bake replaces the original
+science-fiction undersuit texture; external equipment is newly authored geometry,
+rigidly weighted to the existing rig. The equipment positions are expressed in the
+armature's local bind space. Source head texture is retained separately for rebuilds.
+First-person arms additionally have vertex-painted cloth/glove regions. The weapon
+uses its own magazine bone; no community gun mesh is rendered. Metal063 PBR maps
+are reused on shipping containers and existing industrial cases are color-graded.

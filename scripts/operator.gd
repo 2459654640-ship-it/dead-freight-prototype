@@ -104,6 +104,10 @@ func _physics_process(delta):
 	offset+=Vector3(-mouse_sway.x,mouse_sway.y,0).limit_length(.04)
 	weapon.position=weapon.position.lerp(offset,1-exp(-16*delta))
 	weapon.rotation.z=lerpf(weapon.rotation.z,-.25 if action=="RELOADING" else 0.0,1-exp(-12*delta))
+	if weapon.has_meta("carbine_rig") and weapon.has_meta("mag_rest"):
+		var gun_rig:Skeleton3D=weapon.get_meta("carbine_rig");var magazine_bone=gun_rig.find_bone("Magazine")
+		var magazine_motion=sin(PI*clampf(1-action_timer/action_total,0,1)) if action=="RELOADING" else 0.0
+		gun_rig.set_bone_pose_position(magazine_bone,weapon.get_meta("mag_rest")+Vector3(0,0,-.20*magazine_motion))
 	flash.visible=shot_timer>.065
 	update_interaction(delta,blocked)
 func fire()->bool:

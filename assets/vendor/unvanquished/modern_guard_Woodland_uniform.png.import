@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dojj1rswtkufg"
-path="res://.godot/imported/soldier_head_n.jpg-7f243265bd614eec146890f68c0a9342.ctex"
+uid="uid://bwpjjmp0eocei"
+path="res://.godot/imported/modern_guard_Woodland_uniform.png-ef45072ad83aaa83fa406adcb0e9a1d6.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "58028502c989f5b3759c811e08e18eec"
+"md5": "679fc97b01bb53f1bab9f242cae1535b"
 }
 
 [deps]
 
-source_file="res://assets/vendor/unvanquished/soldier_head_n.jpg"
-dest_files=["res://.godot/imported/soldier_head_n.jpg-7f243265bd614eec146890f68c0a9342.ctex"]
+source_file="res://assets/vendor/unvanquished/modern_guard_Woodland_uniform.png"
+dest_files=["res://.godot/imported/modern_guard_Woodland_uniform.png-ef45072ad83aaa83fa406adcb0e9a1d6.ctex"]
 
 [params]
 

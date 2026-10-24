@@ -29,15 +29,24 @@ static func gun(parent:Node,first_person:bool=true)->Node3D:
 	if first_person:
 		var view=load("res://assets/vendor/fps-community/viewmodel.glb").instantiate();g.add_child(view)
 		for mesh in view.find_children("*","MeshInstance3D",true,false):
-			mesh.visible=mesh.name in ["fps_arms_extended","assualt","assualt_ammo"]
-			if mesh.name=="fps_arms_extended":mesh.material_override=mat(Color("9e8c74"))
+			mesh.visible=mesh.name in ["fps_arms_extended","assualt"]
+			if mesh.name=="fps_arms_extended":
+				var sleeve=StandardMaterial3D.new();sleeve.vertex_color_use_as_albedo=true;sleeve.roughness=.95;mesh.material_override=sleeve
+			elif mesh.name=="assualt":
+				mesh.mesh=null
+				pass
 			elif mesh.visible:mesh.material_override=mat(Color("26332f"),.6)
+		var carbine=load("res://assets/vendor/flatguns/carbine.glb").instantiate();g.add_child(carbine);carbine.scale=Vector3.ONE*1.5;carbine.position=Vector3(0,-.08,-.20)
+		var gun_rig:Skeleton3D=carbine.find_children("*","Skeleton3D",true,false)[0]
+		g.set_meta("carbine_rig",gun_rig)
+		var magazine_bone=gun_rig.find_bone("Magazine")
+		if magazine_bone>=0:g.set_meta("mag_rest",gun_rig.get_bone_pose_position(magazine_bone))
 		var anim=view.find_children("*","AnimationPlayer",true,false)[0]
 		# An open reflex sight keeps the target visible over the imported receiver.
-		for x in [-.036,.036]:box(g,Vector3(x,.06,-.75),Vector3(.007,.075,.026),Color("172420"))
-		box(g,Vector3(0,.098,-.75),Vector3(.079,.007,.026),Color("172420"))
-		box(g,Vector3(0,.022,-.75),Vector3(.079,.007,.026),Color("172420"))
-		box(g,Vector3(0,-.012,-.75),Vector3(.025,.065,.035),Color("172420"))
+		for x in [-.022,.022]:box(g,Vector3(x,.06,-.35),Vector3(.006,.046,.026),Color("172420"))
+		box(g,Vector3(0,.083,-.35),Vector3(.050,.006,.026),Color("172420"))
+		box(g,Vector3(0,.037,-.35),Vector3(.050,.006,.026),Color("172420"))
+		box(g,Vector3(0,.002,-.35),Vector3(.025,.065,.035),Color("172420"))
 		g.set_meta("anim",anim);anim.play("assualt_fire");anim.advance(0);anim.pause()
 		return g
 	var asset=load("res://assets/vendor/flatguns/carbine.glb").instantiate()
@@ -83,7 +92,9 @@ static func prop(parent:Node,pos:Vector3,kind:String,height:float=1.0)->Node3D:
 			var material_name=original.resource_name if original else "mid_cargo_box"
 			if material_name.begins_with("flat_emitter"):
 				mesh.set_surface_override_material(surface,mat(Color("f5c28d"),0,1))
-			else:mesh.set_surface_override_material(surface,pbr(material_name))
+			else:
+				var material=pbr(material_name).duplicate();material.albedo_color=Color("a0a28a");material.roughness=.9
+				mesh.set_surface_override_material(surface,material)
 	return root
 static func ground_pbr(name:String)->StandardMaterial3D:
 	if vendor_materials.has(name):return vendor_materials[name]

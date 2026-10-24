@@ -211,6 +211,7 @@ PERSONNEL ONLY",19,Color("dbac64"))
 	for z in [-28,-22]:Kit.box(self,Vector3(26,.025,z),Vector3(6,.03,.10),Color("7fbda3"))
 	for x in [23,29]:Kit.box(self,Vector3(x,.025,-25),Vector3(.10,.03,6),Color("7fbda3"))
 func container(p:Vector3,sideways:bool,material:Material):
+	material=Kit.ground_pbr("Metal063")
 	var s=Vector3(9,2.8,3) if sideways else Vector3(3,2.8,9)
 	structure(p+Vector3(0,1.4,0),s,material)
 	var length=int(s.z/.35)

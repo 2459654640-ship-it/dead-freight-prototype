@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnxntjowtks1q"
-path="res://.godot/imported/soldier_armor.png-3dab6ed1cea7a6b2227505cdf99e08e3.ctex"
+uid="uid://de66wug6tn45a"
+path="res://.godot/imported/modern_guard_soldier_head.jpg-8fee3c3a8c8077d89b1b1e550ffde9d1.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "cad6d8fb1bda99e187443ba0797e6d7c"
+"md5": "be713019146ea653d6d9ecb2806df454"
 }
 
 [deps]
 
-source_file="res://assets/vendor/unvanquished/soldier_armor.png"
-dest_files=["res://.godot/imported/soldier_armor.png-3dab6ed1cea7a6b2227505cdf99e08e3.ctex"]
+source_file="res://assets/vendor/unvanquished/modern_guard_soldier_head.jpg"
+dest_files=["res://.godot/imported/modern_guard_soldier_head.jpg-8fee3c3a8c8077d89b1b1e550ffde9d1.ctex"]
 
 [params]
 
