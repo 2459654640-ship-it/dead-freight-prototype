@@ -1,0 +1,117 @@
+[
+  {
+    "source": "LICENSE.md",
+    "sha256_original": "f7bf763d4c378425b99a5abfe42f49bb03fc530e9721cc5943072becf348caff",
+    "sha256_local": "f7bf763d4c378425b99a5abfe42f49bb03fc530e9721cc5943072becf348caff"
+  },
+  {
+    "source": "level/geometry/models/props.glb",
+    "sha256_original": "4c94cb094c0d84df3cc7d9201d3b59188760c837668afce0446b747c2f40693e",
+    "sha256_local": "4c94cb094c0d84df3cc7d9201d3b59188760c837668afce0446b747c2f40693e"
+  },
+  {
+    "source": "level/geometry/models/container3.tres",
+    "sha256_original": "a1a785df52ad29ff2b627935c84360a22aa2971de10b7e38c7464f7b64fc55b1",
+    "sha256_local": "a1a785df52ad29ff2b627935c84360a22aa2971de10b7e38c7464f7b64fc55b1"
+  },
+  {
+    "source": "level/textures/structure/set_asphalt_albedo.png",
+    "sha256_original": "28e740404045a324fc5829d6de799c1c9bd49e14d39c0d44fcab666438eb3425",
+    "sha256_local": "c123e682810990a9a015c1bc3d87dfbe320f490fc820b17c0728e7351691c773"
+  },
+  {
+    "source": "level/textures/structure/set_asphalt_normal.png",
+    "sha256_original": "98d304e6974f841cfd65f81ab5a75c63c197482bac5b16190c3cc96246d91b90",
+    "sha256_local": "3f5063ae34a6ba260a5582821b4d4db022cbd60986291799ba2b0f95a607d4c6"
+  },
+  {
+    "source": "level/textures/structure/set_asphalt_orm.png",
+    "sha256_original": "6a46d035e739460704c0c9f57df6c29428df1c602490468d2d54d523c4db3411",
+    "sha256_local": "e0447f37333c4500618ab94998f35da1cc7d4c14b678260fc53cf43376858130"
+  },
+  {
+    "source": "level/textures/structure/tile_simple_floor_albedo.png",
+    "sha256_original": "0b2acd854606a93616f058cafa94ea7ae581cfbbc131580e65baebe69c80c036",
+    "sha256_local": "a6a64108bcde0685a5c9a8cae758d2f649f33d570aefc98e75eb0ac56dd8a1b9"
+  },
+  {
+    "source": "level/textures/structure/tile_simple_floor_normal.png",
+    "sha256_original": "29b25d96df7c23eb0969885825b93bb2aade12b6f64f228afdb5e061b02216c5",
+    "sha256_local": "d6b60e66c58008ca2a5d20cbc4d343216f477b1adff6a5e7d5d59d5dddcb50fc"
+  },
+  {
+    "source": "level/textures/structure/tile_painted_gun_metal_albedo.png",
+    "sha256_original": "0a607b5184ecb5d6b2b4bb1aa8b71963a13d1e2830710a0545dd0f41210f02f3",
+    "sha256_local": "718ad69f818c126caadadf0b34c0744cfa2e05df7da4361595dbb3853cc741d0"
+  },
+  {
+    "source": "level/textures/structure/tile_painted_gun_metal_normal.png",
+    "sha256_original": "4449828e3a13f66b5de579d7c1de72c8931835be355b0425b96f8a39603621dd",
+    "sha256_local": "964799fe990c888782992edb6d0a3c99b6ac5244043ffdaf8ce50092d09764a1"
+  },
+  {
+    "source": "level/textures/structure/tile_painted_gun_metal_orm.png",
+    "sha256_original": "32ac6bdef62596d03db3bf0c224aefd1b63a68658d5f349bc043eacfa599f621",
+    "sha256_local": "6ca63aa9543be3d103efc023ac0be9ac5fe0bd257d749fbe25c2681e897acc3b"
+  },
+  {
+    "source": "level/textures/structure/tile_steel_normal.png",
+    "sha256_original": "0cabe4713b2b866ebfea3a09052984ca943179218915f1b78492c100eba18689",
+    "sha256_local": "fd7ed345f0183f7798c085e783f389eb455d853171edb3638387ec1a7dd8beea"
+  },
+  {
+    "source": "level/textures/structure/tile_steel_orm.png",
+    "sha256_original": "523a805c08fc60e42e3ef824ded42a3c6f483197a309ca7beab9adb7bc96347f",
+    "sha256_local": "a8ea1cc25fc243a07d6632dcf7a15dc88dd4455ddce19ae383cec1eb428256c3"
+  },
+  {
+    "source": "level/textures/props/container2_albedo.png",
+    "sha256_original": "a7ecb02f5f1c3f05f3c2249fc686556b26ce6a4e09b03070f03e04aa02eec0be",
+    "sha256_local": "3d4fb2da34bff469f76b9b3c078e65a894910145aa4c3d380f29391da33dc68a"
+  },
+  {
+    "source": "level/textures/props/container2_normal.png",
+    "sha256_original": "8311e8c185055693612738feaf353a4680dae736b71addb38852b3d299d405bf",
+    "sha256_local": "ed09a0b12af1b671cf6d5eb26d8fcb28f5a1202dcb25a44ff37c5723e4ad03fc"
+  },
+  {
+    "source": "level/textures/props/container2_orm.png",
+    "sha256_original": "8e57728a666f28db0752a3054bb19dc890c4db7c40b2e15a16280ee21c9046ae",
+    "sha256_local": "6f179064b6f9c4bdfc5a770ef471d89e79a79f30a7b56d63e984e3d203aaa2b4"
+  },
+  {
+    "source": "level/textures/props/container3_normal.png",
+    "sha256_original": "139c632c4d95bd2e51c05c348d6a4c126507cb2540236a2f9f29b5a33d5b3b49",
+    "sha256_local": "b69a55f396e94ee257e42bcd07844d8fafa91325329cb4bcc9e1656f8149afad"
+  },
+  {
+    "source": "level/textures/props/container3_orm.png",
+    "sha256_original": "f7e1e31ba4700296999b43d78f490f40b797c993e815ff8263d1008da43a9fb8",
+    "sha256_local": "1896107e42318188c8a104896099a275137a2033285e6475ce1c88d8bbbaddf8"
+  },
+  {
+    "source": "level/textures/props/container4_normal.png",
+    "sha256_original": "f186108a17480034da4a12155a00e8f95a914bd407523933c56f6f3d02e36df5",
+    "sha256_local": "d61157be8987ff7d1d4c494620176c5cb5e64846f27c0c8652cca01e00f3aa49"
+  },
+  {
+    "source": "level/textures/props/container4_orm.png",
+    "sha256_original": "f348c23789f6a0be10ac41106caf75bba143a4e3fb175a528dfe86010ff5f092",
+    "sha256_local": "bea9f80d5941cff73b414b8167f6e74c9b03550c395031916dc2e44b9b13a60f"
+  },
+  {
+    "source": "level/textures/props/mid_cargo_box_albedo.png",
+    "sha256_original": "62dd09b0f01ecaa643b768e0e4bded5c6223a3398548fa9bc0481030409a0894",
+    "sha256_local": "656bb3598952279c0428a103356da3c17070101a473e2294fe351909850748b9"
+  },
+  {
+    "source": "level/textures/props/mid_cargo_box_normal.png",
+    "sha256_original": "a692d09b905a9d55e4acc9382df130ef271576bb12e6ba7b13f94e323eeed5bb",
+    "sha256_local": "6ef7b261b078903c5493f8c08267b8790b9fd883b15aee0b95603aeb164154f6"
+  },
+  {
+    "source": "level/textures/props/mid_cargo_box_orm.png",
+    "sha256_original": "0c1124b91cdb9f84e84bfc59629142454c96acba5dacd482c32db1718a0f1529",
+    "sha256_local": "67fadba54e809ef33a38fe1f37973737b62b69a2f17589feee7503a77bebd317"
+  }
+]

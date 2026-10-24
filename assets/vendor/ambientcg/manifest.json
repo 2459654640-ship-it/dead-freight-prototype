@@ -1,0 +1,50 @@
+[
+  {
+    "source": "environment/ground-textures/ambientcg/Asphalt021_2K-JPG/Asphalt021_2K-JPG_Color.jpg",
+    "sha256_original": "04b3817faed0baec4235769ec782f122c8b44989ac1581cea225be969f6e5d7e"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Asphalt021_2K-JPG/Asphalt021_2K-JPG_NormalGL.jpg",
+    "sha256_original": "fe3a383095006f36401520d619c63e1240e7665a8ce75ae94f74380e071fb7e9"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Asphalt021_2K-JPG/Asphalt021_2K-JPG_Roughness.jpg",
+    "sha256_original": "27d1c3abef9ab9f99bfa1341539fd4d6663dadd299d579e8246b9c350d86b141"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Concrete012_2K-JPG/Concrete012_2K-JPG_Color.jpg",
+    "sha256_original": "c6eb8d79df1d62268582f9696027f20803b8f172e607fa45a06f9629311594b3"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Concrete012_2K-JPG/Concrete012_2K-JPG_NormalGL.jpg",
+    "sha256_original": "90eb7c080b4886709acdef834ef1bee17d44ae2a38d0055be1df957982dac0e5"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Concrete012_2K-JPG/Concrete012_2K-JPG_Roughness.jpg",
+    "sha256_original": "414cb64851f573155893d982f7cebc204bb37b5027d983b168ea03b4dc20ce67"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Bricks066_2K-JPG/Bricks066_2K-JPG_Color.jpg",
+    "sha256_original": "af119d3f8d50d834b47e22bcbc68235f55f03fe36cb3bf8d336d9bd5d379bc1a"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Bricks066_2K-JPG/Bricks066_2K-JPG_NormalGL.jpg",
+    "sha256_original": "854dc628fad3a7d7b14c02030c397480125f77090d2824827fe7a1ef90a9c645"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Bricks066_2K-JPG/Bricks066_2K-JPG_Roughness.jpg",
+    "sha256_original": "011980269979084dcf171a79bb7dc3983934edc243a3094969a3a8c4205451d4"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Metal063_2K-JPG/Metal063_2K-JPG_Color.jpg",
+    "sha256_original": "c6c93446af0620f65594fc9472d9f347983a7686b6e4509b084b0ecc10d7c2ac"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Metal063_2K-JPG/Metal063_2K-JPG_NormalGL.jpg",
+    "sha256_original": "f1eabb5d3eec9d3247ed76bcb34336f62d17ccbfe316b0dfb563a30f139af7fe"
+  },
+  {
+    "source": "environment/ground-textures/ambientcg/Metal063_2K-JPG/Metal063_2K-JPG_Roughness.jpg",
+    "sha256_original": "32ce62d9bf51cc2690211a57856650b169400409e73c9cb31ebd0d7a2f7bdd2b"
+  }
+]
